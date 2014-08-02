@@ -1,6 +1,6 @@
-package com.disney.jmetercustomtasks;
+package com.funkyganesha;
 
-import com.disney.jmetercustomtasks.util.JMeterCustomTaskUtil;
+import com.funkyganesha.util.JMeterCustomTaskUtil;
 import org.apache.jmeter.config.Arguments;
 import org.apache.jmeter.protocol.java.sampler.JavaSamplerClient;
 import org.apache.jmeter.protocol.java.sampler.JavaSamplerContext;

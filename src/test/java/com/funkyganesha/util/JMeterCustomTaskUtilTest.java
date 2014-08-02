@@ -1,4 +1,4 @@
-package com.disney.jmetercustomtasks.util;
+package com.funkyganesha.util;
 
 
 import org.junit.Rule;

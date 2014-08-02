@@ -1,4 +1,4 @@
-package com.disney.jmetercustomtasks;
+package com.funkyganesha;
 
 import org.apache.jmeter.config.Arguments;
 import org.apache.jmeter.protocol.java.sampler.JavaSamplerClient;

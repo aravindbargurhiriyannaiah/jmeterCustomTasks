@@ -5,13 +5,11 @@ apply plugin: 'maven'
 version = '1.0'
 
 repositories {
-	maven {
-        	url "http://localhost:8081/nexus/content/groups/public"
-      	}
+    mavenCentral()
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.6'
+    gradleVersion = '2.0'
 }
 
 test {
@@ -26,21 +24,6 @@ dependencies {
             "ch.qos.logback:logback-core:1.0.9",
             'org.apache.jmeter:ApacheJMeter_core:2.9',
             'org.apache.jmeter:ApacheJMeter_java:2.9',
-	    'com.disney:queue:1.0-SNAPSHOT',
-	    'org.apache.hadoop:hadoop-core:0.20.2'
+            'org.apache.hadoop:hadoop-core:0.20.2'
     )
 }
-
-uploadArchives {
-    repositories {
-           mavenDeployer {
-                       repository(url: "http://localhost:8081/nexus/content/repositories/snapshots") {
-                         authentication(userName: "admin", password: "admin123")
-                 }
-            pom.version = "1.0-SNAPSHOT"
-            pom.artifactId = "jmeterCustomTasks"
-            pom.groupId = "com.disney"
-        }
-    }
-}
-
