@@ -42,26 +42,18 @@ Q. How to install Gradle?
 </ul>
 A couple of questions should be answered.
 <ul>
-<li>Where did the above files and folder come from? - build.gradle has a task - called "wrapper", which upon execution, "gradle wrapper", downloaded the above. The above files being available means "Gradle is available". </li>
+<li>Where did the above files and folder come from? - build.gradle has a task - called "wrapper". Upon executing this task, "gradle wrapper", the above files and folders were created. The above files being available means "Gradle is available". </li>
 <li>How to run a gradle task? - Use the ./gradlew or .bat file according to your environment. On Mac OSX, to run all the unit tests, run "./gradle test"</li>
 </ul>
 <b>All gradle commands below were executed on a Mac OSX. Use the .bat variant if you are working on a Windows environment</b>
 <br>Q. How to create an Intellij Idea project?
 <ul>
-<li>Execute "./gradlew clean cleanIdea idea"</li>
-<li>Open Intellij Idea and use the "Open Project" prompts to import the project.</li>
+<li>File -> Import Project</li>
+<li>Point to the build.gradle and follow on screen instructions</li>
 </ul>
-Q. What are some helpful commands in gradle?
-<br>A. Execute "./gradlew tasks" for a list of available tasks
+Q. How to see a list of all available tasks?
+<br>A. Execute "./gradlew tasks"
 <br>
-<br>Q. Intellij Idea is not able to resolve dependencies though they are available in the local cache. What is wrong?
-<br>A. For some reason, Intellij Idea 10.5 does not auto refresh when a new dependency is added to gradle.build. As a workaround, do the following
-<ul>
-<li>Close Intellij Idea</li>
-<li>./gradlew cleanIdea</li>
-<li>./gradlew clean idea</li>
-<li>Reopen the idea project - the dependency should be available.</li>
-</ul>
 Q. How to edit this md file?
 <br>A. This md file was edited using http://notepag.es/, which is no longer available (as of Feb 01, 2013). Try http://dfilimonov.com/github-markup-preview/
 <br><h4>References</h4>
