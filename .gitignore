@@ -1,0 +1,12 @@
+junit/*
+build/*
+out/*
+*.ipr
+*.iml
+*.iws
+.idea/*
+gradle-app.setting
+.gradle
+jmeter.log
+summary.xml
+classes/* 

@@ -1,0 +1,46 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'maven'
+
+version = '1.0'
+
+repositories {
+	maven {
+        	url "http://localhost:8081/nexus/content/groups/public"
+      	}
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.6'
+}
+
+test {
+    testLogging.showStandardStreams = true
+}
+
+dependencies {
+    compile(
+            "junit:junit:4.8.1",
+            "org.slf4j:slf4j-api:1.6.6",
+            "ch.qos.logback:logback-classic:1.0.9",
+            "ch.qos.logback:logback-core:1.0.9",
+            'org.apache.jmeter:ApacheJMeter_core:2.9',
+            'org.apache.jmeter:ApacheJMeter_java:2.9',
+	    'com.disney:queue:1.0-SNAPSHOT',
+	    'org.apache.hadoop:hadoop-core:0.20.2'
+    )
+}
+
+uploadArchives {
+    repositories {
+           mavenDeployer {
+                       repository(url: "http://localhost:8081/nexus/content/repositories/snapshots") {
+                         authentication(userName: "admin", password: "admin123")
+                 }
+            pom.version = "1.0-SNAPSHOT"
+            pom.artifactId = "jmeterCustomTasks"
+            pom.groupId = "com.disney"
+        }
+    }
+}
+
