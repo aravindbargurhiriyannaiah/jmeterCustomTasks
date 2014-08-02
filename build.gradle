@@ -2,8 +2,6 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'maven'
 
-version = '1.0'
-
 repositories {
     mavenCentral()
 }
@@ -26,4 +24,26 @@ dependencies {
             'org.apache.jmeter:ApacheJMeter_java:2.9',
             'org.apache.hadoop:hadoop-core:0.20.2'
     )
+}
+
+task incrementBuildNumber  << {
+        def gradlePropertiesFile = file('gradle.properties')
+        if (gradlePropertiesFile.canRead()) {
+            def Properties versionProps = new Properties()
+            versionProps.load(new FileInputStream(gradlePropertiesFile))
+            def currentVersionNumberString = versionProps['version']
+            def VersionNumber currentVersionNumber = VersionNumber.parse(currentVersionNumberString)
+            VersionNumber newVersionNumber = VersionNumber.parse(
+                    currentVersionNumber.getMajor() + "." +
+                            currentVersionNumber.getMinor() + "." +
+                            (currentVersionNumber.getMicro() + 1))
+            println "Version number changed from $currentVersionNumberString to $newVersionNumber"
+            versionProps['version'] = newVersionNumber.toString()
+            versionProps.store(gradlePropertiesFile.newWriter(), null)
+        } else {
+            ant.fail("Could not read gradle.properties in the root of the project." +
+                    "\nThe prerequisites for executing this task successfully" +
+                    "\n1. Create a file called 'gradle.properties' in the root of your project." +
+                    "\n2. Add this string to it 'version = major.minor.micro' to increment micro by 1.")
+        }
 }
